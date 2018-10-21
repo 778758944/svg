@@ -9,7 +9,7 @@
 <link href="" rel="stylesheet">
 </head>
 <body>
-    <svg>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     	<defs>
     		<g id="shape">
     			<rect x="0" y="0" width="50" height="50"/>
@@ -19,8 +19,33 @@
     	<use xlink:href="#shape" x="50" y="50" />
     	<use xlink:href="#shape" x="200" y="50" />
     </svg>
-    <svg width="1000" height="500">
-    	<use xlink:href="#shape" x="500" y="50"/>
-    </svg>
+    <svg width="1000" height="500" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<use href="#shape" x="500" y="50"/>
+		<rect x=50 y=50 width=100 height=100 fill="#f00" id="rect1"/>
+	</svg>
+	<div id="div1"></div>
+	<script>
+		console.dir(document.getElementById("div1"));
+		var svg1 = document.getElementById("svg1");
+		console.dir(svg1);
+		var use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+		// var use = svg1.createElement("use");
+		use.setAttribute("href", "#shape");
+		use.setAttribute("x", "500");
+		use.setAttribute("y", "200");
+		svg1.appendChild(use);
+
+		var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+		rect.setAttribute('x', 50);
+		rect.setAttribute("y", 200);
+		rect.setAttribute("width", 100);
+		rect.setAttribute("height", 100);
+		rect.setAttribute("fill", "#f00");
+
+		svg1.appendChild(rect);
+
+		var rect1 = document.getElementById("#rect1");
+		console.log(rect1);
+	</script>
 </body>
 </html>
